@@ -1,11 +1,11 @@
 # Site settings
-author: michael white
-title: 
+author: Mike White
+title: The Docs will see you now
 header-img: img/home-bg.png
 email: michaeljwhite@gmail.com
-copyright_name: michael white
+copyright_name: Mike White
 description: > # this means to ignore newlines until "baseurl:"
-  
+  A collection of love letters to our future selves.
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  big32mike
