@@ -14,15 +14,15 @@ I have a terrible habit of jumping into things without reading the instructions.
 
 I wish I'd watched [Avi's](https://www.youtube.com/watch?v=_lDExWIhYKI) [videos](https://www.youtube.com/watch?v=Y5X6NRQi0bU) all the way through before I started anything with this project. His idea to start "close to the user" and get the CLI working was the better approach. Instead, I had mac and cheese on the brain, so I immediately jumped into scraping the recipe index page, and individual recipe pages for attributes I could turn into objects. 
 
-### Scraper.rb
+### [Scraper.rb](https://github.com/big32mike/cheezme/blob/master/lib/cheezme/scraper.rb)
 I followed the OO-student-scraper lab paradigm and decided to do my scraping in its own class. It made sense to me to separate my scraping concern from my eventual objects. This class is just a hash factory--URLs come in, hashes go out. Objects are data and behavior, so my class methods here return hashes of data. This allows my object class(es) to be more generic.
 
 There are a few places where I had to massage the scraped data to play nicely. The precision of the math that calculates the star ratings would make my high school Physics teacher proud. Two decimal places is plenty for us mortals. I originally replaced the preceding "By " characters from the cook's names, since that would make for a cleaner `Cook.name` attribute. In the end I only used Recipe objects, so the having the "By " in there was better for printing. When scraping the directions I would periodically get some unwanted text appended to each step for particular recipes. Once I noticed it during testing, I realized I needed to account for it. There was also a phantom item in the CSS element array that I had to pop off. One recipe was even missing the `li.prepTime__item` element from its recipe page, so I had to account for that.
 
-### Recipe.rb
+### [Recipe.rb](https://github.com/big32mike/cheezme/blob/master/lib/cheezme/recipe.rb)
 With the heavy lifting done in the Scraper class, my focus was on building actual objects. Knowing I had to go a level deep, I didn't want to duplicate a lot of effort here. I knew I'd need to scrape an index page to create objects, but also extend those objects with more attributes from a subsequent page. Once I could create an object from a hash, I knew adding attributes from an array of hashes would be trivial. The Music CLI and Student Scraping labs really set me up for success here. Mass assignment with the send method is one of my favorite bits of Ruby syntactic sugar. I made `create_from_collection` a class method since it's essentially a custom constructor. I didn't add `print_ingredients_and_directions` until I'd gotten the CLI close to complete. One more thing I didn't realize I needed since I dove right into objects.
 
-### CLI.rb
+### [CLI.rb](https://github.com/big32mike/cheezme/blob/master/lib/cheezme/cli.rb)
 As much as I wish I'd gotten the interface working first, it was good for me to struggle with it a bit at the end. I heard my parents utter something about always learning the hard way. This was a good real-world introduction to controller concept of the MVC pattern. It's a good foundation to build on as we get to more complex apps. It felt a little hacky to assign `Cheezme::Recipe.all` to `@@all`, but I wanted short hand. It didn't seem like a best practice. I weighed making it an instance variable for a sec, which would have required an `attr_accessor`. That felt like overkill. I also could have namespaced this better, to use `Recipe.all` or `Scraper.scrape_recipe_index`.
 
 ### Cheezme::CLI.menu
