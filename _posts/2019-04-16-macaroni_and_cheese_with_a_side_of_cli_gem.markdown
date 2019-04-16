@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Macaroni and Cheese with a side of CLI Gem"
-date:       2019-04-16 09:33:26 +0000
+date:       2019-04-16 05:33:27 -0400
 permalink:  macaroni_and_cheese_with_a_side_of_cli_gem
 ---
 
@@ -32,5 +32,5 @@ I started this section writing about the reservations I had about the readabilit
 My mac has Ruby 2.6.0 and Bundler 2.0.1 installed. I ran into [this bug](https://github.com/bundler/bundler/issues/6937) when trying to run my CLI and get the console IRB session working. I have RVM installed, so I installed Ruby 2.4.5 and I was able to `bundle install` my way into bliss. I probably should have played around in the sandbox to avoid these issues, but the flexibility of developing locally trumps the browser or IDE experience. I appreciate the learn IDE being available, since it makes it accessible for the beginner, but I'm glad I was able to figure this issue out without too much pain.  I'm still not 100% sure about my gemspec, but my program works after moving some things around. I look forward to growing more comfortable writing gems.
 
 ### Refactoring, Features, and drawn conclusions
-I could easily add a cook class, in fact I did start a `cook.rb`. A recipe has one cook, a cook has many recipes. I even considered writing a reviews class, where a recipe has many reviews. Reviews would get instantiated through recipes. Relating cooks to reviews is a rabbit hole that I don't want to start down. It would be nice to have some color in the output, and with a better eye for design, I'd arrange the data in a more aesthetically pleasing way. I took this opportunity to sharpen my git foo. In my current role, we "develop" off the master branch. I read up on git feature branch workflows once I had my project in a working state. I didn't want to lose progress to my tinkering.
+I could easily add a cook class, in fact I did start a `cook.rb`. A recipe has one cook, a cook has many recipes. I even considered writing a reviews class, where a recipe has many reviews. Reviews would get instantiated through recipes. Relating cooks to reviews is a rabbit hole that I don't want to start down. It would be nice to have some color in the output, and with a better eye for design, I'd arrange the data in a more aesthetically pleasing way. I also took this opportunity to sharpen my git foo. In my current role, we "develop" off the master branch. I used a feature branch workflow once my project was in a working state.
 
