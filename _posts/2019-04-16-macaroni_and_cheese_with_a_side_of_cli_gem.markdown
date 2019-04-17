@@ -5,21 +5,23 @@ date:       2019-04-16 05:33:27 -0400
 permalink:  macaroni_and_cheese_with_a_side_of_cli_gem
 ---
 
-Even if you don't find my [code](https://github.com/big32mike/cheezme) useful, you're at least thinking about mac and cheese. For that, you're welcome. For this project I chose to scrape the [Macaroni and Cheese category](https://allrecipes.com/recipes/509/main-dish/pasta/macaroni-and-cheese/) of [Allrecipes.com](http://allrecipes.com). The code wasn't as challenging as the project planning and time management. This post will help me avoid future pitfalls.
+### Introduction
+Macaroni and Cheese is a staple of family gatherings, and a go-to comfort food for me. As my homage to fromage, I built a CLI scraper of the [Macaroni and Cheese category](https://allrecipes.com/recipes/509/main-dish/pasta/macaroni-and-cheese/) at [Allrecipes.com](http://allrecipes.com). The planning and time management aspect of the project was more challenging than writing the code. This is my restrospective.
+
 ### Planning...
-...is not the word I should use for what happened with this project.  Traveling and underestimating the amount of work put me behind. I designed a complex object model before having a working interface. I overestimated the importance of the scraping mechanics, and front loaded that work. Next time I'll build the house before furnishing it. I'll use this post as my blueprint.
+...was not a big part of my process.  While traveling I fell behind by underestimating the project scope. I overestimated the object complexity requirements before having a working interface. I also overestimated the project portion focused on scraping mechanics, and prioritized that effort. Next time build the house before furnishing it, using this post as a blueprint.
 
 ### Getting started
-When I finally got around to the interface, I realized [Avi's](https://www.youtube.com/watch?v=_lDExWIhYKI) [videos](https://www.youtube.com/watch?v=Y5X6NRQi0bU) were a gold mind. I wasn't exactly sure what Bundler was doing, but I got my interface stubbed out enough to keep up progress.
+When I finally got around to the interface, I realized [Avi's](https://www.youtube.com/watch?v=_lDExWIhYKI) [videos](https://www.youtube.com/watch?v=Y5X6NRQi0bU) were a gold mind. I wasn't exactly sure what Bundler was doing, but I got my interface stubbed out enough to keep up progress. As a Linux admin, I take for granted how second nature file permissions and shell interpreters are to me, and how unwelcoming they are to beginners. The ability to break down daunting tasks to discrete manageable pieces is as important as writing an algorithm. It's its own algorithm.
+
+### [CLI.rb](https://github.com/big32mike/cheezme/blob/master/lib/cheezme/cli.rb)
+I missed the subtle influence of the directory structure of the project on the namespace until the end of the project. Avi touched on it briefly in the video, but I managed to gloss it over.  I made a class variable `@@all` because I got tired of typing `Cheezme::Recipe`. Lesson learned. `@@url` made more sense than hard coding the site in the scraping method. It's a class variable to allow methods direct access.
 
 ### [Scraper.rb](https://github.com/big32mike/cheezme/blob/master/lib/cheezme/scraper.rb)
 We don't need to create any scraper objects, but it made sense to separate our scraping from our object factory. We learned how to turn hashes into objects programatically, so that seemed like a good delimiter.  There is a recipe missing the cook and prep time data on its page, so I had to account for those edge cases here. There are also a few recipes whose url doesn't scrape fully the first time or two. Retries are eventually successful.
 
 ### [Recipe.rb](https://github.com/big32mike/cheezme/blob/master/lib/cheezme/recipe.rb)
 The Object Relation labs prepared me for quickly creating objects from collections. It was trivial to extend those objects with more attributes after the Mass Assignment lab. The color assignment would be cleaner if refactored into its own method, called from the constructor. I tried using the rainbow refinements, but bundler wasn't finding it. I could have used colorized, but I saw others using it so I wanted the challenge of figuring out a different gem.
-
-### [CLI.rb](https://github.com/big32mike/cheezme/blob/master/lib/cheezme/cli.rb)
-I missed the subtle influence of the directory structure of the project on the namespace until the end. Avi touched on it briefly in the video, but it was easy to gloss over.  I used @@all because I got tired of typing `Cheezme::Recipe`. Lesson learned. @@url made more sense than hard coding the url in the scraping method. I wanted to access it directly without passing an argument, hence the class variable.
 
 ### Cheezme::CLI.menu
 I literally refactored this method in the middle of writing this paragraph. I wanted to avoid multiple `elsif` by using a `case/when`. I was thwarted when I needed to test for inclusion in the range of integers, but also act on the string values. The retry logic was added to coerce the finickey recipe pages. 
