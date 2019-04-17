@@ -6,7 +6,7 @@ permalink:  macaroni_and_cheese_with_a_side_of_cli_gem
 ---
 
 ### Introduction
-Macaroni and Cheese is a staple of family gatherings, and a go-to comfort food for me. As my homage to fromage, I built a CLI scraper of the [Macaroni and Cheese category](https://allrecipes.com/recipes/509/main-dish/pasta/macaroni-and-cheese/) at [Allrecipes.com](http://allrecipes.com). The planning and time management aspect of the project was more challenging than writing the code. This is my restrospective.
+Macaroni and Cheese is a staple of family gatherings, and a go-to comfort food for me. As my homage to fromage, I built a CLI scraper of the [Macaroni and Cheese category](https://allrecipes.com/recipes/509/main-dish/pasta/macaroni-and-cheese/) at [Allrecipes.com](http://allrecipes.com). The planning and time management aspects of the project were more challenging than writing the code. This is my restrospective.
 
 ### Planning...
 ...was not a big part of my process.  While traveling I fell behind by underestimating the project scope. I overestimated the object complexity requirements before having a working interface. I also overestimated the project portion focused on scraping mechanics, and prioritized that effort. Next time build the house before furnishing it, using this post as a blueprint.
